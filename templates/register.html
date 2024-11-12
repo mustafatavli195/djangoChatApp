@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Form in HTML and CSS</title>
+    <link rel="stylesheet" href="{% static "css/loginProjectCss/style.css" %}"
+    />
+  </head>
+  <body>
+    <div class="login_form">
+
+
+      {% if messages %}
+        {% for message in messages %}
+          {% if message.tags == "success" %}
+            <script>
+              alert("{{message}}")
+            </script>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      
+      <!-- Register form container -->
+      <form action="#" method="POST">
+        {% csrf_token %}
+        <h3>Register with</h3>
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {% endfor %}
+
+        <div class="login_option">
+          <!-- Google button -->
+          <div class="option">
+            <a href="#">
+              <img src="{% static "logos/google.png" %}" alt="Google" />
+              <span>Google</span>
+            </a>
+          </div>
+
+          <!-- Apple button -->
+          <div class="option">
+            <a href="#">
+              <img src="{% static "logos/apple.png" %}" alt="Apple" />
+              <span>Apple</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Register option separator -->
+        <p class="separator">
+          <span>or</span>
+        </p>
+
+        <!-- Name input box -->
+        <div class="input_box">
+          <label for="name">Username</label>
+          <input type="text" id="username" placeholder="Enter your Username" required  name="username"/>
+        </div>
+
+        <!-- Email input box -->
+        <div class="input_box">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter email address"
+            required
+          />
+        </div>
+
+        <!-- Password input box -->
+        <div class="input_box">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <!-- Confirm Password input box -->
+        <div class="input_box">
+          <label for="confirm_password">Confirm Password</label>
+          <input
+            type="password"
+            name="password2"
+            id="confirm_password"
+            placeholder="Confirm your password"
+            required
+          />
+        </div>
+
+        <!-- Register button -->
+        <button type="submit">Register</button>
+
+        <p class="sign_up">Already have an account? <a href="#">Log in</a></p>
+      </form>
+    </div>
+  </body>
+</html>
